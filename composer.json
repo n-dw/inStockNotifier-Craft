@@ -1,0 +1,14 @@
+{
+	"name": "n-dW/instocknotifier",
+	"description": "Sends an email to users who have requested to be notified when a product is restocked",
+	"type": "craft-plugin",
+	"authors": [
+		{
+			"name": "NdW",
+			"homepage": "natedewaard.com"
+		}
+	],
+	"require": {
+		"composer/installers": "~1.0"
+	}
+}

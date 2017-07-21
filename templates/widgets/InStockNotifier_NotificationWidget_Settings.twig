@@ -1,0 +1,26 @@
+{#
+/**
+ * In Stock Notifier plugin for Craft CMS
+ *
+ * In Stock Notifier_NotificationWidget Settings
+ *
+ * @author    NdW
+ * @copyright Copyright (c) 2017 NdW
+ * @link      natedewaard.com
+ * @package   InStockNotifier
+ * @since     1.0.0
+ */
+#}
+
+{% import "_includes/forms" as forms %}
+
+{% includeCssResource "instocknotifier/css/InStockNotifier_Style.css" %}
+{% includeJsResource "instocknotifier/js/InStockNotifier_Script.js" %}
+
+{{ forms.textField({
+    label: 'Some Setting',
+    instructions: 'Enter some setting here.',
+    id: 'someSetting',
+    name: 'someSetting',
+    value: settings['someSetting']})
+}}
