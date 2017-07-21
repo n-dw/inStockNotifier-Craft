@@ -27,7 +27,7 @@ None nessesary ATM just install
 
 ## Using In Stock Notifier
 
-###Customer Request
+### Customer Request
 
 Send a POST request to inStockNotifier/notification/requestRestockNotification with the fields
 
@@ -42,11 +42,23 @@ Send a POST request to inStockNotifier/notification/requestRestockNotification w
 
 This will create a record in the db.
 
-###Send Emails
+### Send Emails
+The emails are sent when a product is saved and its stock increased to greater than zero. We use the event commerce_products.onBeforeSaveProduct and check if the product is about to be saved from the cp and that its stock was 0 and will be increased upon save.
 
-When a product is saved in the admin cp and its stock has increased from zero therefore that means its been restocked we send out emails for that product if there are any requested.
+If you don't want it to send onBeforeSaveProduct or to send with a task or cron job use:
 
-If you don't want it to send onBeforeSaveProduct or to send with a task or cron job use craft()->inStockNotifier_notification->processNotifications().
+```PHP
+craft()->inStockNotifier_notification->processNotifications();
+```
+This will go through ever request that has not been sent yet and return all the requests that have product in stock and attempt to send emails to the user.
+
+Additionally you can add 
+
+```PHP
+craft()->inStockNotifier_notification->processNotifications($productId = false, $isReStock = false);
+```
+- $productId will get all notification requests for that product
+- $isReStock if this is true it means we checked that the product is in stock already and we dont need to do it twice, use this with $productId.
 
 ## In Stock Notifier Roadmap
 
