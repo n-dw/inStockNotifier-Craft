@@ -18,11 +18,22 @@ In Stock Notifier works on Craft 2.4.x and Craft 2.5.x.
 
 ## In Stock Notifier Overview
 
--Insert text here-
+Allows users to request to be notified when a product is restocked via email.
 
 ## Configuring In Stock Notifier
 
--Insert text here-
+Send a POST request to inStockNotifier/notification/requestRestockNotification with the fields
+
+customerEmail - the email address of the person who wants to be notified when product is restocked
+productId - the id of the product
+
+This will create a record in the db.
+
+When a product is saved in the admin cp and its stock has increased from zero therefore that means its been restocked we send out emails for that product if there are any requested.
+
+If you don't want it to send onBeforeSaveProduct or to send with a task or cron job use craft()->inStockNotifier_notification->processNotifications().
+
+
 
 ## Using In Stock Notifier
 
