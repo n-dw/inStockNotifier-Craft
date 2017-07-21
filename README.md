@@ -62,10 +62,10 @@ craft()->inStockNotifier_notification->processNotifications($productId = false, 
 
 ## In Stock Notifier Roadmap
 
-Add a widget to show latest request, and latest emails sent and failed send.
-Add a trigger in cp to send emails
-Make email customizable
-Add archive flag to db table to archive send ones.
+- Add a widget to show latest request, and latest emails sent and failed send.
+- Add a trigger in cp to send emails
+- Make email customizable
+- Add archive flag to db table to archive send ones.
 
 * Release it
 
