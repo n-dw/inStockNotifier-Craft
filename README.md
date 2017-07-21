@@ -22,26 +22,38 @@ Allows users to request to be notified when a product is restocked via email.
 
 ## Configuring In Stock Notifier
 
+None nessesary ATM just install
+
+
+## Using In Stock Notifier
+
+###Customer Request
+
 Send a POST request to inStockNotifier/notification/requestRestockNotification with the fields
 
-customerEmail - the email address of the person who wants to be notified when product is restocked
-productId - the id of the product
+- customerEmail - the email address of the person who wants to be notified when product is restocked
+- productId - the id of the product
+
+```HTML
+<input type="hidden" name="action" value="inStockNotifier/notification/requestRestockNotification">
+<input type="hidden" name="productId" value="{{product.id}}">
+<input type="hidden" name="customerEmail" value="{{ currentUser.email }}">
+```
 
 This will create a record in the db.
+
+###Send Emails
 
 When a product is saved in the admin cp and its stock has increased from zero therefore that means its been restocked we send out emails for that product if there are any requested.
 
 If you don't want it to send onBeforeSaveProduct or to send with a task or cron job use craft()->inStockNotifier_notification->processNotifications().
 
-
-
-## Using In Stock Notifier
-
--Insert text here-
-
 ## In Stock Notifier Roadmap
 
-Some things to do, and ideas for potential features:
+Add a widget to show latest request, and latest emails sent and failed send.
+Add a trigger in cp to send emails
+Make email customizable
+Add archive flag to db table to archive send ones.
 
 * Release it
 
